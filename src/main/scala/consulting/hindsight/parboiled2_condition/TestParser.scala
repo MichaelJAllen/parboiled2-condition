@@ -33,7 +33,7 @@ extends Parser {
   }
 
   def conditional[U](condition: Boolean, parse: () => Rule1[U]): Rule1[Option[U]] = rule {
-    test(condition)  ~!~ parse() ~> (Some(_)) | push(None)
+    test(condition)  ~ parse() ~> (Some(_)) | push(None)
   }
 
   def dependentFields = rule {
